@@ -1,0 +1,108 @@
+interface Print {
+    start(x: number, y: number): void
+    move(x: number, y: number): void
+    end(): void
+}
+
+type TPrint = Pen
+
+/**
+ * 笔迹
+ */
+class Pen extends egret.Sprite implements Print {
+
+    private lastX: number;
+    private lastY: number;
+
+    public constructor() {
+        super();
+    }
+
+    public start(x: number, y: number): void {
+        this.lastX = x;
+        this.lastY = y;
+        this.graphics.lineStyle(2, 0xf0f0f0);
+    }
+    public move(x: number, y: number): void {
+        if (this.lastX && this.lastY) {
+            this.graphics.moveTo(this.lastX, this.lastY);
+            this.lastX = undefined;
+            this.lastY = undefined;
+        }
+        this.graphics.lineTo(x, y);
+    }
+    public end(): void {
+        this.graphics.endFill();
+    }
+}
+
+/**
+ * 工具面板
+ */
+class ToolBar extends egret.DisplayObjectContainer {}
+
+class Painer extends egret.Sprite {
+
+    private stack: Array<TPrint> = [];
+
+    private printNum = 0;
+
+    public constructor(w: number, h: number) {
+        super();
+
+        // 绘制黑板
+        this.renderBlackboard(w, h);
+
+        this.touchEnabled = true;
+
+        this.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBegin, this);
+        this.addEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEnd, this);
+
+        // 撤销按钮
+        const cancelBtn = new ToolButton;
+        cancelBtn.onClick = (evt: egret.TouchEvent) => {
+            console.log('on cancel', evt)
+            if (this.printNum > 0) {
+                this.removeChildAt(this.numChildren - 1);
+                this.printNum -= 1;
+            }
+            console.log(this.numChildren);
+        }
+        cancelBtn.x = 100;
+        cancelBtn.y = 100;
+        this.addChild(cancelBtn);
+
+    }
+
+    private renderBlackboard(w: number, h: number) {
+        this.graphics.beginFill(0x243138);
+        this.graphics.drawRect(0, 0, w, h);
+        this.graphics.endFill();
+    }
+
+    private onTouchBegin(e: egret.TouchEvent): void {
+        this.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
+        const pen = new Pen;
+        pen.start(e.stageX, e.stageY);
+        this.stack.push(pen);
+    }
+
+    private onTouchEnd(e: egret.TouchEvent): void {
+        this.removeEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
+        const print = this.stack[this.stack.length - 1];
+        print.end();
+    }
+
+    private onTouchMove(e: egret.TouchEvent): void {
+
+        const print = this.stack[this.stack.length - 1];
+
+        if (this.contains(print)) {
+            this.removeChild(print);
+            this.printNum -= 1;
+        }
+        print.move(e.stageX, e.stageY);
+        this.addChild(print);
+        this.printNum += 1;
+    }
+}
