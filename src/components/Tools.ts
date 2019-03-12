@@ -1,3 +1,5 @@
+
+// color ref: https://yoshino-ui.github.io/#/docs/components/color
 const MenuType = {
     PEN: {
         color: 0xe57373
@@ -10,6 +12,9 @@ const MenuType = {
     },
     CALCEL: {
         color: 0xbdbdbd
+    },
+    SAVE: {
+        color: 0x004d40
     }
 }
 
