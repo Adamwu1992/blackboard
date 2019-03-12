@@ -12,9 +12,11 @@
 		"bin-debug/Main.js",
 		"bin-debug/Platform.js",
 		"bin-debug/Progress.js",
-		"bin-debug/components/MyGrid.js",
-		"bin-debug/components/MyTick.js",
-		"bin-debug/painter/Painer.js",
-		"bin-debug/painter/ToolButton.js"
+		"bin-debug/components/Blackboard.js",
+		"bin-debug/components/Print.js",
+		"bin-debug/components/ToolButton.js",
+		"bin-debug/components/Tools.js",
+		"bin-debug/demo/MyGrid.js",
+		"bin-debug/demo/MyTick.js"
 	]
 }

@@ -97,13 +97,7 @@ class Main extends egret.DisplayObjectContainer {
         const stageW = this.stage.stageWidth;
         const stageH = this.stage.stageHeight;
 
-        // const sky = new egret.Shape;
-        // sky.graphics.beginFill(0x243138);
-        // sky.graphics.drawRect(0, 0, stageW, stageH);
-        // sky.graphics.endFill();
-        // this.addChild(sky);
-
-        const painter = new Painer(stageW, stageH);
+        const painter = new Blackboard(stageW, stageH);
         this.addChild(painter);
     }
 
