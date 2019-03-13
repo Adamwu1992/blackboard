@@ -50,10 +50,14 @@ class Tools extends egret.Sprite {
         const menu = new ToolButton(x, y, 70, 70, type.color);
         menu.onClick = onClick;
         menu.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
-            for (let i = 0, l = this.menuList.length; i < l; i++) {
-                this.menuList[i].isClicked = false;
+            for (let i = 0; i < this.menuNum; i++) {
+                const m = this.menuList[i];
+                if (m === menu) {
+                    m.isClicked = true;
+                } else {
+                    m.isClicked = false;
+                }
             }
-            menu.isClicked = true;
         }, this);
 
         this.menuNum += 1;
@@ -61,6 +65,6 @@ class Tools extends egret.Sprite {
 
         this.addChild(menu);
 
-        return menu
+        return menu;
     }
 }
