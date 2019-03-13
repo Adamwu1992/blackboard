@@ -35,15 +35,15 @@ class Blackboard extends egret.Sprite {
         this.addChild(tools);
 
         tools.addMenu(MenuType.PEN, () => {
-            console.log('PEN')
+            log('PEN')
             this.CurrentPrint = Pen;
         });
         tools.addMenu(MenuType.CIRCLE, () => {
-            console.log('CIRCLE')
+            log('CIRCLE')
             this.CurrentPrint = Circle;
         });
         tools.addMenu(MenuType.RECTANGLR, () => {
-            console.log('RECTANGLR')
+            log('RECTANGLR')
             this.CurrentPrint = Rect;
         });
         tools.addMenu(MenuType.CALCEL, () => {
@@ -53,7 +53,7 @@ class Blackboard extends egret.Sprite {
             }
         });
         tools.addMenu(MenuType.SAVE, () => {
-            console.log('SAVE');
+            log('SAVE');
         });
     }
 

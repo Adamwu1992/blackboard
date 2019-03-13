@@ -89,17 +89,14 @@ class Rect extends egret.Shape implements Print {
     public start(x: number, y: number): void {
         this.startX = x;
         this.startY = y;
-        console.log('start', x, y);
     }
 
     public move(_x: number, _y: number): void {
-        console.log('move', _x, _y);
         this.graphics.clear();
         const { x, y, width, height } = this.getRectDesc(_x, _y);
         this.graphics.lineStyle(2, 0xf0f0f0);
         this.graphics.drawRect(x, y, width, height);
         this.graphics.endFill();
-        console.log('draw', x, y, width, height);
     }
 
     public end() {}
