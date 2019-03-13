@@ -15,6 +15,14 @@ class TouchEnabled extends egret.Sprite {
         this.addEventListener(egret.TouchEvent.TOUCH_TAP, cb, this);
         this.cb = cb;
     }
+
+    set isClicked(flag: boolean) {
+        if (flag) {
+            log('focus', this.width, this.x);
+        } else {
+            log('blur');
+        }
+    }
 }
 
 class ToolButton extends TouchEnabled {

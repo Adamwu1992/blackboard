@@ -25,6 +25,8 @@ class Tools extends egret.Sprite {
 
     private menuNum = 0;
 
+    private menuList: Array<ToolButton> = [];
+
     private barWidth = 80;
 
     public constructor(stageW: number, stageH: number) {
@@ -38,7 +40,7 @@ class Tools extends egret.Sprite {
 
     }
 
-    public addMenu(type: MenuType, onClick: Callback): void {
+    public addMenu(type: MenuType, onClick: Callback): ToolButton {
 
         const x = 5;
         const y = 75 * this.menuNum + 5;
@@ -47,9 +49,18 @@ class Tools extends egret.Sprite {
         // margin is 5
         const menu = new ToolButton(x, y, 70, 70, type.color);
         menu.onClick = onClick;
+        menu.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
+            for (let i = 0, l = this.menuList.length; i < l; i++) {
+                this.menuList[i].isClicked = false;
+            }
+            menu.isClicked = true;
+        }, this);
 
         this.menuNum += 1;
+        this.menuList.push(menu);
 
         this.addChild(menu);
+
+        return menu
     }
 }
