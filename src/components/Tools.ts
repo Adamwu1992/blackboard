@@ -36,25 +36,9 @@ class Tools extends egret.Sprite {
         this.x = 20;
         this.y = 20;
 
-        this.addMenu(MenuType.PEN, () => {
-            console.log('PEN')
-        });
-
-        this.addMenu(MenuType.CIRCLE, () => {
-            console.log('CIRCLE')
-        });
-        this.addMenu(MenuType.RECTANGLR, () => {
-            console.log('RECTANGLR')
-        });
-        this.addMenu(MenuType.CALCEL, () => {
-            console.log('CALCEL');
-        });
-        this.addMenu(MenuType.SAVE, () => {
-            console.log('SAVE');
-        })
     }
 
-    private addMenu(type: MenuType, onClick: Callback): void {
+    public addMenu(type: MenuType, onClick: Callback): void {
 
         const x = 5;
         const y = 75 * this.menuNum + 5;

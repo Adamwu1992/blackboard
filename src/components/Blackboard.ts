@@ -4,30 +4,23 @@ class Blackboard extends egret.Sprite {
 
     private printNum = 0;
 
+    private CurrentPrint: new() => TPrint = Pen
+    private getPrint() {
+        return new this.CurrentPrint
+    }
+
     public constructor(w: number, h: number) {
         super();
 
         // 绘制黑板
         this.renderBG(w, h);
+        // 绘制工具栏
+        this.renderTools(w, h);
 
         this.touchEnabled = true;
 
         this.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBegin, this);
         this.addEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEnd, this);
-
-        // 撤销按钮
-        // const cancelBtn = new ToolButton;
-        // cancelBtn.onClick = (evt: egret.TouchEvent) => {
-        //     console.log('on cancel', evt)
-        //     if (this.printNum > 0) {
-        //         this.removeChildAt(this.numChildren - 1);
-        //         this.printNum -= 1;
-        //     }
-        //     console.log(this.numChildren);
-        // }
-        // cancelBtn.x = 100;
-        // cancelBtn.y = 100;
-        // this.addChild(cancelBtn);
 
     }
 
@@ -35,16 +28,40 @@ class Blackboard extends egret.Sprite {
         this.graphics.beginFill(0x243138);
         this.graphics.drawRect(0, 0, w, h);
         this.graphics.endFill();
+    }
 
+    private renderTools(w: number, h: number) {
         const tools = new Tools(w, h);
         this.addChild(tools);
+
+        tools.addMenu(MenuType.PEN, () => {
+            console.log('PEN')
+            this.CurrentPrint = Pen;
+        });
+        tools.addMenu(MenuType.CIRCLE, () => {
+            console.log('CIRCLE')
+            this.CurrentPrint = Circle;
+        });
+        tools.addMenu(MenuType.RECTANGLR, () => {
+            console.log('RECTANGLR')
+            this.CurrentPrint = Rect;
+        });
+        tools.addMenu(MenuType.CALCEL, () => {
+            if (this.printNum > 0) {
+                this.removeChildAt(this.numChildren - 1);
+                this.printNum -= 1;
+            }
+        });
+        tools.addMenu(MenuType.SAVE, () => {
+            console.log('SAVE');
+        });
     }
 
     private onTouchBegin(e: egret.TouchEvent): void {
         this.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
-        const pen = new Rect;
-        pen.start(e.stageX, e.stageY);
-        this.stack.push(pen);
+        const print = this.getPrint();
+        print.start(e.stageX, e.stageY);
+        this.stack.push(print);
     }
 
     private onTouchEnd(e: egret.TouchEvent): void {
