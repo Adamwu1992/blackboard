@@ -99,6 +99,7 @@ class Main extends egret.DisplayObjectContainer {
 
         const painter = new Blackboard(stageW, stageH);
         this.addChild(painter);
+
     }
 
 

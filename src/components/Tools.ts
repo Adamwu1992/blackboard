@@ -1,4 +1,7 @@
 
+interface MenuType {
+    color: number
+}
 // color ref: https://yoshino-ui.github.io/#/docs/components/color
 const MenuType = {
     PEN: {
@@ -28,32 +31,37 @@ class Tools extends egret.Sprite {
         super();
 
         this.graphics.beginFill(0xffffff, .8);
-        this.graphics.drawRect(20, 20, this.barWidth, stageH - 40);
+        this.graphics.drawRect(0, 0, this.barWidth, stageH - 40);
         this.graphics.endFill();
+        this.x = 20;
+        this.y = 20;
 
-        this.addMenu('PEN', () => {
+        this.addMenu(MenuType.PEN, () => {
             console.log('PEN')
         });
 
-        this.addMenu('CIRCLE', () => {
+        this.addMenu(MenuType.CIRCLE, () => {
             console.log('CIRCLE')
         });
-        this.addMenu('RECTANGLR', () => {
+        this.addMenu(MenuType.RECTANGLR, () => {
             console.log('RECTANGLR')
         });
-        this.addMenu('CALCEL', () => {
+        this.addMenu(MenuType.CALCEL, () => {
             console.log('CALCEL');
         });
+        this.addMenu(MenuType.SAVE, () => {
+            console.log('SAVE');
+        })
     }
 
-    private addMenu(type: string, onClick: Callback): void {
+    private addMenu(type: MenuType, onClick: Callback): void {
 
         const x = 5;
         const y = 75 * this.menuNum + 5;
 
         // width & height is are both 5
         // margin is 5
-        const menu = new ToolButton(this, x, y, 70, 70, MenuType[type].color);
+        const menu = new ToolButton(x, y, 70, 70, type.color);
         menu.onClick = onClick;
 
         this.menuNum += 1;

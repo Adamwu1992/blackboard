@@ -19,15 +19,11 @@ class TouchEnabled extends egret.Sprite {
 
 class ToolButton extends TouchEnabled {
 
-    public constructor(continer: egret.DisplayObjectContainer, x?: number, y?: number, width?: number, height?: number, color?: number) {
+    public constructor(x?: number, y?: number, width?: number, height?: number, color?: number) {
         super();
 
-        const point = continer.localToGlobal(x, y);
-        console.log('globalToLocal', x, y, point);
-
-        this.x = point.x;
-        this.y = point.y;
-
+        this.x = x;
+        this.y = y;
 
         this.graphics.beginFill(color || 0xff713f);
         this.graphics.drawRect(0, 0, width || 50, height || 50);
