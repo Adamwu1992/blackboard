@@ -36,15 +36,12 @@ class Blackboard extends egret.Sprite {
         this.addChild(tools);
 
         tools.addMenu(MenuType.PEN, () => {
-            log('PEN')
             this.CurrentPrint = Pen;
         });
         tools.addMenu(MenuType.CIRCLE, () => {
-            log('CIRCLE')
             this.CurrentPrint = Circle;
         });
         tools.addMenu(MenuType.RECTANGLR, () => {
-            log('RECTANGLR')
             this.CurrentPrint = Rect;
         });
         tools.addMenu(MenuType.CALCEL, () => {

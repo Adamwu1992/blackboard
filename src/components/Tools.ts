@@ -1,26 +1,4 @@
 
-interface MenuType {
-    color: number
-}
-// color ref: https://yoshino-ui.github.io/#/docs/components/color
-const MenuType = {
-    PEN: {
-        color: 0xe57373
-    },
-    CIRCLE: {
-        color: 0xec407a
-    },
-    RECTANGLR: {
-        color: 0x880e4f
-    },
-    CALCEL: {
-        color: 0xbdbdbd
-    },
-    SAVE: {
-        color: 0x004d40
-    }
-}
-
 class Tools extends egret.Sprite {
 
     private menuNum = 0;
@@ -47,7 +25,7 @@ class Tools extends egret.Sprite {
 
         // width & height is are both 5
         // margin is 5
-        const menu = new ToolButton(x, y, 70, 70, type.color);
+        const menu = new ToolButton(x, y, 70, 70, type);
         menu.onClick = onClick;
         menu.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
             for (let i = 0; i < this.menuNum; i++) {
