@@ -4,9 +4,11 @@ class Blackboard extends egret.Sprite {
 
     private printNum = 0;
 
-    private CurrentPrint: new() => TPrint = Pen
+    private CurrentPrint: new() => TPrint;
     private getPrint() {
-        return new this.CurrentPrint
+        if (this.CurrentPrint) {
+            return new this.CurrentPrint;
+        }
     }
 
     public constructor(w: number, h: number) {
@@ -20,7 +22,6 @@ class Blackboard extends egret.Sprite {
         this.touchEnabled = true;
 
         this.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBegin, this);
-        this.addEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEnd, this);
 
     }
 
@@ -58,8 +59,11 @@ class Blackboard extends egret.Sprite {
     }
 
     private onTouchBegin(e: egret.TouchEvent): void {
-        this.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
         const print = this.getPrint();
+        if (!print) return;
+
+        this.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
+        this.addEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEnd, this);
         print.start(e.stageX, e.stageY);
         this.stack.push(print);
     }

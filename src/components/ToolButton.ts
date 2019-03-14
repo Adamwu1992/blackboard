@@ -18,24 +18,43 @@ class TouchEnabled extends egret.Sprite {
 
     set isClicked(flag: boolean) {
         if (flag) {
-            log('focus', this.width, this.x);
+            this.renderActive();
         } else {
-            log('blur');
+            this.renderNormal();
         }
     }
+
+    public renderNormal() {}
+    public renderActive() {}
 }
 
 class ToolButton extends TouchEnabled {
+
+    private color: number;
 
     public constructor(x?: number, y?: number, width?: number, height?: number, color?: number) {
         super();
 
         this.x = x;
         this.y = y;
+        this.width = width;
+        this.height = height;
+        this.color = color;
 
-        this.graphics.beginFill(color || 0xff713f);
-        this.graphics.drawRect(0, 0, width || 50, height || 50);
-        // this.graphics.drawCircle(x || 50, y || 50, 50);
+        this.renderNormal();
+    }
+
+    public renderNormal() {
+        this.graphics.clear();
+        this.graphics.beginFill(this.color || 0xff713f);
+        this.graphics.drawRect(0, 0, this.width || 50, this.height || 50);
+        this.graphics.endFill();
+    }
+    
+    public renderActive() {
+        this.graphics.clear();
+        this.graphics.beginFill(this.color || 0xff713f, .7);
+        this.graphics.drawRect(0, 0, this.width || 50, this.height || 50);
         this.graphics.endFill();
     }
 }
