@@ -5,7 +5,8 @@
 		"libs/modules/game/game.js",
 		"libs/modules/tween/tween.js",
 		"libs/modules/assetsmanager/assetsmanager.js",
-		"libs/modules/promise/promise.js"
+		"libs/modules/promise/promise.js",
+		"libs/modules/eui/eui.js"
 	],
 	"game": [
 		"bin-debug/components/BlackboardContainer.js",
@@ -19,6 +20,7 @@
 		"bin-debug/components/ToolButton.js",
 		"bin-debug/components/Tools.js",
 		"bin-debug/demo/MyGrid.js",
-		"bin-debug/demo/MyTick.js"
+		"bin-debug/demo/MyTick.js",
+		"bin-debug/eui/Button.js"
 	]
 }
