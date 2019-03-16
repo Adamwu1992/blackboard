@@ -35,22 +35,22 @@ class Blackboard extends egret.Sprite {
         const tools = new Tools(w, h);
         this.addChild(tools);
 
-        tools.addMenu(MenuType.PEN, () => {
+        tools.appendChild(ButtonPen, () => {
             this.CurrentPrint = Pen;
         });
-        tools.addMenu(MenuType.CIRCLE, () => {
+        tools.appendChild(ButtonCircle, () => {
             this.CurrentPrint = Circle;
         });
-        tools.addMenu(MenuType.RECTANGLR, () => {
+        tools.appendChild(ButtonRect, () => {
             this.CurrentPrint = Rect;
         });
-        tools.addMenu(MenuType.CALCEL, () => {
+        tools.appendChild(ButtonCancel, () => {
             if (this.printNum > 0) {
                 this.removeChildAt(this.numChildren - 1);
                 this.printNum -= 1;
             }
         });
-        tools.addMenu(MenuType.SAVE, () => {
+        tools.appendChild(ButtonSave, () => {
             log('SAVE');
         });
     }

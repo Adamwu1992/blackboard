@@ -94,13 +94,6 @@ class Main extends egret.DisplayObjectContainer {
         const painter = new Blackboard(stageW, stageH);
         this.addChild(painter);
 
-        const brn = new Button;
-        brn.label = 'hello world';
-        brn.x = 400;
-        brn.y = 400;
-        brn.skinName = "resource/skins/Button.exml";
-        this.addChild(brn);
-
         // const slug = new egret.Shape;
         // slug.graphics.beginFill(0x00b0ff);
         // slug.graphics.drawRect(0, 0, 60, 60);

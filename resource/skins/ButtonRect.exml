@@ -1,0 +1,13 @@
+<e:Skin class="ButtonSkin" xmlns:e="http://ns.egret.com/eui" states="up,down,disabled">
+    <e:Image source="resource/assets/icon-border.png" includeIn="up" width="100%" height="100%"/>
+    <e:Image source="resource/assets/icon-active-border.png" includeIn="down" width="100%" height="100%"/>
+    <e:Image source="resource/assets/icon-disable-border.png" includeIn="disabled" width="100%" height="100%"/>
+    <e:Label
+        id="labelDisplay"
+        textAlign="left"
+        verticalAlign="middle"
+        left="20"
+        right="20"
+        top="10"
+        bottom="10"/>
+</e:Skin>

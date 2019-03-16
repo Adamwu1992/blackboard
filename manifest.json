@@ -9,18 +9,23 @@
 		"libs/modules/eui/eui.js"
 	],
 	"game": [
-		"bin-debug/components/BlackboardContainer.js",
-		"bin-debug/LoadingUI.js",
+		"bin-debug/eui/Button.js",
+		"bin-debug/components/Tools.js",
 		"bin-debug/Platform.js",
 		"bin-debug/Progress.js",
 		"bin-debug/common/log.js",
 		"bin-debug/components/Blackboard.js",
-		"bin-debug/Main.js",
+		"bin-debug/components/BlackboardContainer.js",
 		"bin-debug/components/Print.js",
 		"bin-debug/components/ToolButton.js",
-		"bin-debug/components/Tools.js",
+		"bin-debug/Main.js",
 		"bin-debug/demo/MyGrid.js",
 		"bin-debug/demo/MyTick.js",
-		"bin-debug/eui/Button.js"
+		"bin-debug/LoadingUI.js",
+		"bin-debug/eui/ButtonCancel.js",
+		"bin-debug/eui/ButtonCircle.js",
+		"bin-debug/eui/ButtonPen.js",
+		"bin-debug/eui/ButtonRect.js",
+		"bin-debug/eui/ButtonSave.js"
 	]
 }

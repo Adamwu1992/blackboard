@@ -9,7 +9,7 @@ class Button extends eui.Component {
         super();
 
         this.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouched, this);
-        this.addEventListener(egret.TouchEvent.TOUCH_END, this.onTouched, this);
+        // this.addEventListener(egret.TouchEvent.TOUCH_END, this.onTouched, this);
     }
 
     private onTouched(evt: egret.TouchEvent) {
@@ -32,6 +32,10 @@ class Button extends eui.Component {
         if (this.labelDisplay) {
             this.labelDisplay.text = s;
         }
+    }
+
+    set isFocus(isFocus: boolean) {
+        this.touchDown = isFocus;
     }
 
     protected childrenCreated(): void {
